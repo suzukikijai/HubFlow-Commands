@@ -1,0 +1,48 @@
+# For modification of pre-existing project
+clone <projectURL>
+
+# Move to project directory is stored
+cd <project folder>
+
+#Initiate the Git-HubFlow service for the folder directory
+git hf init
+
+#After initiation the project is by default in the Develop branch
+#Check current branch status
+git checkout
+
+
+#Create a new branch to work on.
+#NEVER work directly on the develop or master branch
+git hf feature start <feature-name>
+git hf push
+
+#After creation of the new feature branch youll be relocated to the feature/<feature-name> branch.
+#Check current branch status
+git checkout
+
+#Perform modifications and commit-push as many times as required.
+git commit -am "<Enter relevant message>"
+git hf push
+
+#Once the project modifications related to the task are complete. Merge the current feature branch to the develop branch and delete the feature branch after merge. The below command will handle both those tasks.
+git hf feature finish
+git hf push
+
+#Once a complete sprint is completed and stable prepare for a release using the following command.
+git hf update
+git hf release start <X.X>
+git hf push
+
+
+#After creation of the new release branch youll be relocated to the feature branch.
+#Check current branch status
+git checkout
+
+#Perform tests/modifications and commit-push as many times as required.
+git commit -am "<Enter relevant message>"
+git hf push
+
+#Once the testing processes are complete. Merge the current release branch to the develop and master branch and close the release branch after merge. Also create a tag <X.X> against the point at which the releasse branch merged with the master branch. The below command will handle all these tasks.
+git hf release finish <X.X>
+git hf push
